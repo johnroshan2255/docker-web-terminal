@@ -4,29 +4,32 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/johnroshan2255/docker-web-terminal.git'
+                git branch: 'main',
+                    url: 'https://github.com/johnroshan2255/docker-web-terminal.git'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build App') {
             steps {
-                sh 'npm install'
+                sh '''
+                  npm install
+                  npm run build
+                '''
             }
         }
 
-        stage('Build Svelte Project') {
+        stage('Build Docker Image') {
             steps {
-                sh 'npm run build'
+                sh '''
+                  docker build -t johnroshan/terminal:latest .
+                '''
             }
         }
     }
 
     post {
         success {
-            echo 'Build succeeded!'
-        }
-        failure {
-            echo 'Build failed!'
+            echo 'Image built successfully'
         }
     }
 }
