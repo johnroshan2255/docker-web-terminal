@@ -454,7 +454,7 @@
 <main>
   <div class="container">
     <div class="header">
-      <h1><i class="fa fa-terminal"></i> Docker Terminal</h1>
+      <h1><i class="fa fa-terminal"></i> Docker Web Terminal</h1>
       {#if connected && selectedContainer}
         <div class="connection-status">
           <span class="status-indicator"></span>
