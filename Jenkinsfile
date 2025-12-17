@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build Svelte Project') {
             steps {
-                sh 'npm run build || npm run dev'
+                sh 'npm run dev'
             }
         }
     }
